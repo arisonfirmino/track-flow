@@ -15,12 +15,17 @@ const MusicPlayer = ({
 }) => {
   const handlePlayPause = () => {
     if (isPlaying) {
+      audioRef.current.pause();
       setIsPlaying(false);
     } else {
       playMusic();
       setIsPlaying(true);
     }
   };
+
+  const progressPercentage = audioRef.current
+    ? (currentTime / audioRef.current.duration) * 100
+    : 0;
 
   return (
     <div className="space-y-5">
@@ -30,7 +35,10 @@ const MusicPlayer = ({
         max={audioRef.current ? audioRef.current.duration : 0}
         value={currentTime}
         onChange={handleProgressChange}
-        className="mt-3 w-full"
+        className="h-1 w-full appearance-none rounded-full"
+        style={{
+          background: `linear-gradient(to right, var(--primary) ${progressPercentage}%, var(--foreground) ${progressPercentage}%)`,
+        }}
       />
       <div className="flex items-center justify-between">
         <button>

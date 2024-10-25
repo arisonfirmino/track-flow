@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../spotify";
-import Container from "../components/Container";
-import AlbumItem from "../components/AlbumItem";
-import BackButton from "../components/BackButton";
+
+import AlbumItem from "./AlbumItem";
 
 const Albums = () => {
   const [albums, setAlbums] = useState([]);
@@ -14,11 +13,7 @@ const Albums = () => {
   }, []);
 
   return (
-    <Container>
-      <div className="px-5 pt-5">
-        <BackButton />
-      </div>
-
+    <>
       <h2 className="mb-2.5 ml-5 mt-5 text-lg font-semibold text-primary">
         Álbuns Salvos
       </h2>
@@ -27,7 +22,7 @@ const Albums = () => {
           <AlbumItem key={album.album.id} album={album.album} />
         ))}
       </div>
-    </Container>
+    </>
   );
 };
 

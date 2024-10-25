@@ -82,7 +82,7 @@ const Player = () => {
       )}
 
       {music && music.preview_url ? (
-        <div className="absolute bottom-10 w-full px-10">
+        <div className="fixed bottom-10 w-full px-10 md:absolute">
           <MusicPlayer
             playMusic={playMusic}
             isPlaying={isPlaying}

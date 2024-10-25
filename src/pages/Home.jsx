@@ -1,3 +1,4 @@
+import Albums from "../components/Albums";
 import Container from "../components/Container";
 import Header from "../components/Header";
 import Menu from "../components/menu";
@@ -14,7 +15,10 @@ const Home = () => {
         <Menu />
       </div>
 
-      <NewReleases />
+      <div className="pb-5">
+        <NewReleases />
+        <Albums />
+      </div>
     </Container>
   );
 };

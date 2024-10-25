@@ -1,18 +1,10 @@
-import {
-  LuChevronRight,
-  LuGalleryVerticalEnd,
-  LuHeart,
-  LuListMusic,
-  LuMic2,
-} from "react-icons/lu";
+import { LuChevronRight, LuHeart, LuListMusic } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 const Menu = () => {
   const menu_items = [
     { title: "Músicas Curtidas", icon: <LuHeart />, href: "/saved-tracks" },
     { title: "Playlists", icon: <LuListMusic />, href: "/playlists" },
-    { title: "Artistas", icon: <LuMic2 />, href: "/artists" },
-    { title: "Álbuns", icon: <LuGalleryVerticalEnd />, href: "/albums" },
   ];
 
   return (
