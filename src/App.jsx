@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/Login";
@@ -11,50 +11,49 @@ import Artistis from "./pages/Artists";
 import SavedTracks from "./pages/SavedTracks";
 
 const App = () => {
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const hash = window.location.hash;
-    let token = window.localStorage.getItem("token");
+    let _token = window.localStorage.getItem("token");
+    const tokenTimestamp = window.localStorage.getItem("token_timestamp");
+    const currentTime = Date.now();
+    const thirtyMinutes = 30 * 60 * 1000;
 
     const handleLogout = () => {
       window.localStorage.removeItem("token");
       window.localStorage.removeItem("token_timestamp");
+      setToken("");
       navigate("/login");
     };
 
-    if (hash) {
-      token = hash.split("&")[0].split("=")[1];
-      window.localStorage.setItem("token", token);
+    if (!_token && hash) {
+      _token = hash.split("&")[0].split("=")[1];
+      window.localStorage.setItem("token", _token);
       window.localStorage.setItem("token_timestamp", Date.now());
+      setToken(_token);
+      setClientToken(_token);
       window.location.hash = "";
-    }
-
-    if (token) {
-      const tokenTimestamp = window.localStorage.getItem("token_timestamp");
-      const currentTime = Date.now();
-      const thirtyMinutes = 30 * 60 * 1000;
+    } else if (_token) {
+      setToken(_token);
+      setClientToken(_token);
 
       if (currentTime - tokenTimestamp > thirtyMinutes) {
         handleLogout();
       } else {
-        setClientToken(token);
+        const remainingTime = thirtyMinutes - (currentTime - tokenTimestamp);
 
-        const timeout = setTimeout(
-          () => {
-            handleLogout();
-          },
-          thirtyMinutes - (currentTime - tokenTimestamp),
-        );
+        const timeout = setTimeout(handleLogout, remainingTime);
 
         return () => clearTimeout(timeout);
       }
-    } else {
-      navigate("/login");
     }
   }, [navigate]);
 
-  return (
+  return !token ? (
+    <Login />
+  ) : (
     <Routes>
       <Route path="/track-flow" element={<Home />} />
       <Route path="/saved-tracks" element={<SavedTracks />} />

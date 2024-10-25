@@ -62,7 +62,7 @@ const Player = () => {
         <BackButton />
       </div>
       {music && (
-        <div className="flex flex-col items-center gap-5 px-5 pt-5">
+        <div className="flex flex-col items-center gap-5 px-5 pt-10">
           <img
             src={music.album.images[0].url}
             alt={music.name}

@@ -8,10 +8,6 @@
   --foreground: #a1a1aa;
 }
 
-body {
-  background: #1e1e1e;
-}
-
 input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   height: 10px;

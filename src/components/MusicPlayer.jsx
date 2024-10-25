@@ -1,9 +1,4 @@
-import {
-  LuPlay,
-  LuChevronsLeft,
-  LuChevronsRight,
-  LuPause,
-} from "react-icons/lu";
+import { LuPlayCircle, LuPauseCircle } from "react-icons/lu";
 
 const MusicPlayer = ({
   playMusic,
@@ -28,7 +23,14 @@ const MusicPlayer = ({
     : 0;
 
   return (
-    <div className="space-y-5">
+    <div className="flex items-center gap-5">
+      <button
+        onClick={handlePlayPause}
+        className="flex min-h-10 min-w-10 items-center justify-center rounded-full bg-primary"
+      >
+        {isPlaying ? <LuPauseCircle size={24} /> : <LuPlayCircle size={24} />}
+      </button>
+
       <input
         type="range"
         min="0"
@@ -40,19 +42,6 @@ const MusicPlayer = ({
           background: `linear-gradient(to right, var(--primary) ${progressPercentage}%, var(--foreground) ${progressPercentage}%)`,
         }}
       />
-      <div className="flex items-center justify-between">
-        <button>
-          <LuChevronsLeft size={24} />
-        </button>
-
-        <button onClick={handlePlayPause}>
-          {isPlaying ? <LuPause size={28} /> : <LuPlay size={28} />}
-        </button>
-
-        <button>
-          <LuChevronsRight size={24} />
-        </button>
-      </div>
     </div>
   );
 };

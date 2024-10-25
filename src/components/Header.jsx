@@ -19,13 +19,13 @@ const Header = () => {
         <h2 className="text-2xl font-bold">Biblioteca</h2>
       </div>
 
-      <button className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full">
+      <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full">
         {image ? (
           <img src={image} alt="Usuário" className="h-full w-full" />
         ) : (
           <LuUser />
         )}
-      </button>
+      </div>
     </header>
   );
 };
