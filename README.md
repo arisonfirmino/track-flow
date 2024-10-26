@@ -10,4 +10,4 @@ A API do Spotify apresenta algumas limitações. Assim, o usuário tem acesso a 
 
 Apesar dessa limitação, a API do Spotify ainda oferece um acesso abrangente a diversas informações, o que me permitiu desenvolver uma aplicação dinâmica e intuitiva. Esse projeto foi uma ótima oportunidade para aprofundar meus conhecimentos em consumo de APIs, além de explorar formas de criar uma experiência envolvente para o usuário.
 
-A aplicação está disponivel online para acesso nesse link: [track-flow](https://arisonfirmino.github.io/track-flow)
+🔗 Acesse o projeto: [track-flow](https://arisonfirmino.github.io/track-flow)
